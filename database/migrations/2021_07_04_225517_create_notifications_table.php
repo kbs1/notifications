@@ -20,6 +20,7 @@ class CreateNotificationsTable extends Migration
 			$table->longText('body');
 			$table->json('recipients');
 			$table->json('replacements')->nullable();
+			$table->json('attachments')->nullable();
 			$table->timestamp('scheduled_at')->useCurrent();
 			$table->timestamp('sent_at')->nullable();
 			$table->text('webhook_success_url')->nullable();
