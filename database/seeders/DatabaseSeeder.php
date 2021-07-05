@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Clients\Client;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,6 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		// \App\Clients\Client::factory(10)->create();
+		Client::factory(10)->create();
 	}
 }

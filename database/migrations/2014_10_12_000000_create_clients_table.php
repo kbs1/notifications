@@ -14,8 +14,11 @@ class CreateClientsTable extends Migration
 	public function up()
 	{
 		Schema::create('clients', function (Blueprint $table) {
-			$table->id();
-			$table->string('name');
+			$table->bigIncrements('id');
+			$table->string('name')->unique();
+			$table->string('api_key')->unique();
+			$table->bigInteger('sent_notifications_count')->unsigned()->default(0);
+			$table->integer('notifications_retention_days')->unsigned()->default(180);
 			$table->timestamps();
 		});
 	}

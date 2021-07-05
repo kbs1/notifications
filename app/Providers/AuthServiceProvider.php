@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Clients\Client;
+
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +28,8 @@ class AuthServiceProvider extends ServiceProvider
 	{
 		$this->registerPolicies();
 
-		//
+		Auth::viaRequest('api-key', function (Request $request) {
+			return Client::whereApiKey($request->input('api_key'))->first();
+		});
 	}
 }

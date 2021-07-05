@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Clients;
 
 use App\Clients\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,6 +24,9 @@ class ClientFactory extends Factory
 	{
 		return [
 			'name' => $this->faker->name(),
+			'api_key' => Str::random(40),
+			'sent_notifications_count' => rand(0, 100),
+			'notifications_retention_days' => rand(1, 365),
 		];
 	}
 }

@@ -15,16 +15,13 @@ class CreateTemplatesTable extends Migration
 	{
 		Schema::create('templates', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->foreignId('service_id')->constrained('services');
+			$table->foreignId('client_id')->constrained('clients');
 			$table->string('name');
 			$table->longText('title');
 			$table->longText('body');
-			$table->json('replacements')->nullable();
-			$table->text('webhook_success_url')->nullable();
-			$table->text('webhook_failure_url')->nullable();
 			$table->timestamps();
 
-			$table->unique(['service_id', 'name']);
+			$table->unique(['client_id', 'name']);
 		});
 	}
 

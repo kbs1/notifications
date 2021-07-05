@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-	return $request->user();
+Route::middleware(['auth:api', 'forceJsonResponse'])->prefix('v1')->namespace('Api\v1')->name('api.v1.')->group(function () {
+	Route::prefix('attachments')->name('attachments.')->group(function () {
+		Route::post('sync', 'AttachmentsController@sync')->name('sync');
+	});
+
+	Route::prefix('services')->name('services.')->group(function () {
+		Route::post('sync', 'ServicesController@sync')->name('sync');
+	});
+
+	Route::prefix('templates')->name('templates.')->group(function () {
+		Route::post('sync', 'TemplatesController@sync')->name('sync');
+	});
+
+	Route::prefix('notifications')->name('notifications.')->group(function () {
+		Route::post('send', 'NotificationsController@send')->name('send');
+	});
 });

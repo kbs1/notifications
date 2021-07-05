@@ -16,9 +16,12 @@ class CreateServicesTable extends Migration
 		Schema::create('services', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->foreignId('client_id')->constrained('clients');
+			$table->string('name');
 			$table->enum('type', ['smtp', 'twilio_sms', 'one_signal']);
 			$table->json('data')->nullable();
 			$table->timestamps();
+
+			$table->unique(['client_id', 'name']);
 		});
 	}
 

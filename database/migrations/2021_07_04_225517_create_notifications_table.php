@@ -15,11 +15,12 @@ class CreateNotificationsTable extends Migration
 	{
 		Schema::create('notifications', function (Blueprint $table) {
 			$table->bigIncrements('id');
+			$table->foreignId('client_id')->constrained('clients');
+			$table->foreignId('service_id')->constrained('services');
 			$table->foreignId('template_id')->constrained('templates');
 			$table->longText('title');
 			$table->longText('body');
-			$table->json('recipients');
-			$table->json('replacements')->nullable();
+			$table->json('data');
 			$table->json('attachments')->nullable();
 			$table->timestamp('scheduled_at')->useCurrent();
 			$table->timestamp('sent_at')->nullable();
