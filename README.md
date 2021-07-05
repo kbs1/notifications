@@ -4,12 +4,12 @@ A small microservice written in Laravel allowing multiple clients to send notifi
 
 Definitions
 ===========
-*Client* - remote caller (consumer) of the API.
-*API key* - unique key used to identify the caller in each request
-*Service* - notification sending service, each Client can configure multiple services
-*Template* - notification template, containing title and body
-*Attachment* - attachable file
-*Notification* - sent notification, after applying any replacements and attaching arbitrary number of attachments
+- *Client* - remote caller (consumer) of the API.
+- *API key* - unique key used to identify the caller in each request
+- *Service* - notification sending service, each Client can configure multiple services
+- *Template* - notification template, containing title and body
+- *Attachment* - attachable file
+- *Notification* - sent notification, after applying any replacements and attaching arbitrary number of attachments
 
 Operation
 ===========
